@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+{% load crispy_forms_filters %}
+
+{% block content %}
+    <h1>Authors</h1>
+    <p>Authors in system</p>
+    <ol>
+    {% for authors in object_list %}
+            <li><a href="{% url 'author-detail' authors.id %}">{{ authors.name }}</a></li>
+    {% empty %}
+        <h1>No Authors</h1>
+    {% endfor %}
+    </ol>
+{% endblock %}
+
+{% block right %}
+    <a href="{% url 'create-author' %}" class="badge badge-primary p-4 m-4">Add New Author</a>
+{% endblock %}
+
+
+{% block left %}
+     <button class="badge badge-primary p-4 m-4" onclick="history.back()">Go Back</button>
+{% endblock %}

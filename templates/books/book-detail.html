@@ -1,0 +1,56 @@
+{% extends 'base.html' %}
+{% load crispy_forms_filters %}
+
+{% block content %}
+    <div class="card">
+        <img src="https://picsum.photos/200" class="card-img-top" alt="book-image" style="height: 300px">
+        <div class="card-body">
+            <h2 class="card-title">
+                <span><i class="fa fa-book" aria-hidden="true"></i></span>
+                {{ object.title }}
+            </h2>
+            <p class="card-text">
+            <div class="text-bg-primary p-3">
+                <h3>
+                    <span><i class="fa fa-user" aria-hidden="true"></i></span>
+                    <span>{{ object.author }}</span>
+                </h3>
+                <h3>
+                    <span><i class="fa fa-bars" aria-hidden="true"></i></span>
+                    <span>{{ object.category }}</span>
+                </h3>
+                <h3>
+                    <span><i class="fa fa-calendar" aria-hidden="true"></i></span>
+                    <span>{{ object.created }}</span>
+                </h3>
+                <h3>
+                    <span><i class="fa fa-folder" aria-hidden="true"></i></span>
+                    <span>{{ object.quantity_received }}</span>
+                </h3>
+                <h3>
+                    <span><i class="fa fa-user-tag" aria-hidden="true"></i></span>
+                    <span>
+                        {% if object.fiction == False %}
+                            Non-Fiction
+                        {% else %}
+                            Fiction
+                        {% endif %}
+                    </span>
+                </h3>
+            </div>
+            </p>
+        </div>
+    </div>
+
+{% endblock %}
+
+
+{% block right %}
+    <a href="{% url 'update-book' object.id %}" class="badge badge-primary p-4 m-4">Update Book</a>
+    <a href="{% url 'delete-book' object.id %}" class="badge badge-primary p-4">Delete Book</a>
+{% endblock %}
+
+
+{% block left %}
+    <button class="badge badge-primary p-4 m-4" onclick="history.back()">Go Back</button>
+{% endblock %}

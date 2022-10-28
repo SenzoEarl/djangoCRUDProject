@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+{% load crispy_forms_filters %}
+
+{% block content %}
+    <h1>Category</h1>
+    <p>Categories in system</p>
+    <ol>
+    {% for category in object_list %}
+
+            <li><a href="{% url 'category-detail' category.id %}">{{ category.title }}</a></li>
+
+    {% empty %}
+        <h1>No Books</h1>
+    {% endfor %}
+    </ol>
+{% endblock %}
+
+{% block right %}
+    <a href="{% url 'create-category' %}" class="badge badge-primary p-4 m-4">Add New Category</a>
+{% endblock %}
+
+
+{% block left %}
+     <button class="badge badge-primary p-4 m-4" onclick="history.back()">Go Back</button>
+{% endblock %}

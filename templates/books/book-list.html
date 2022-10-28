@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+{% load crispy_forms_filters %}
+
+{% block content %}
+    <h1>Books</h1>
+    <p>Books in inventory</p>
+    <ol>
+        {% for book in object_list %}
+            <li><a href="{% url 'book-detail' book.id %}">{{ book.title }}</a></li>
+        {% empty %}
+            <h1>No Books</h1>
+        {% endfor %}
+    </ol>
+{% endblock %}
+
+{% block right %}
+    <a href="{% url 'create-new-book' %}" class="badge badge-primary p-4 m-4">Add New Book</a>
+{% endblock %}
+
+
+{% block left %}
+    <button class="badge badge-primary p-4 m-4" onclick="history.back()">Go Back</button>
+{% endblock %}

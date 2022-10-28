@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+
+
+{% block content %}
+    <h1>Category:<span><i class="fa fa-book" aria-hidden="true"></i></span></h1>
+    <p class="text-capitalize"><small>Category: </small><small>{{ object.title }}</small></p>
+{% endblock %}
+
+
+{% block right %}
+    <a href="{% url 'category-update' object.id %}" class="badge badge-primary p-4 m-4">Update Category</a>
+    <a href="{% url 'category-delete' object.id %}" class="badge badge-primary p-4">Delete Category</a>
+{% endblock %}
+
+
+{% block left %}
+     <button class="badge badge-primary p-4 m-4" onclick="history.back()">Go Back</button>
+{% endblock %}

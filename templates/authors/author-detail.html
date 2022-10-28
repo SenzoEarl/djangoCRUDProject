@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+    <h1>Author:<span><i class="fa fa-book" aria-hidden="true"></i></span></h1>
+
+    <p><small>Author: </small><small>{{ object }}</small></p>
+    <p><small>Name: </small><small>{{ object.name }}</small></p>
+    <p><small>Surname: </small><small>{{ object.surname }}</small></p>
+    <p><small>Email: </small><small>{{ object.email }}</small></p>
+{% endblock %}
+
+
+{% block right %}
+    <a href="{% url 'author-update' object.id %}" class="badge badge-primary p-4 m-4">Update Author</a>
+    <a href="{% url 'author-delete' object.id %}" class="badge badge-primary p-4">Delete Author</a>
+
+{% endblock %}
+
+{% block left %}
+     <button class="badge badge-primary p-4 m-4" onclick="history.back()">Go Back</button>
+{% endblock %}
